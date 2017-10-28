@@ -1549,3 +1549,49 @@ html, body{
     }
   }
 }
+
+
+/*------------courses--------------*/
+
+.wrap_courses{
+  padding:50px 0 0 0;
+  .item_course{
+    position:relative;
+    box-shadow:0 0 25px rgba(0, 0, 0, 0.35);;
+    transition: 0.5s;
+    margin-bottom:70px;
+    &:hover{
+      transition:0.5s;
+      transform: scale(1.05, 1.05);
+      box-shadow:0 0 30px rgba(0, 0, 0, 0.55);
+    }
+    .img_block{
+      min-height:220px; 
+      overflow:hidden;
+    }
+    .inner_item_course{
+      padding:25px 25px 60px 25px;
+      .title_item_post{
+        font-size:18px;
+        margin-top:0;
+        font-family:$OswaldM;
+        text-transform: none;
+        text-align:center;
+        a{
+          color:#000;
+          text-decoration: none;
+          &:hover{
+            text-decoration:underline;
+          }
+        }
+      }
+      .btn_wrap{
+        text-align:center;
+        position:absolute;
+        bottom:-25px;
+        width:100%;
+        left:0;
+      }
+    }
+  }
+}
