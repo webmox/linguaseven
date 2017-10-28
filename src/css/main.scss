@@ -1565,12 +1565,55 @@ html, body{
       transform: scale(1.05, 1.05);
       box-shadow:0 0 30px rgba(0, 0, 0, 0.55);
     }
-    .img_block{
+    .top_block{
       min-height:220px; 
       overflow:hidden;
+      position:relative;
+      .top_info{
+          position:absolute;
+          top:0;
+          left:0;
+          width:42%;
+          height:100%;
+          background:rgba(54, 204, 204, 0.93);
+          color:#fff;
+          text-align:center;
+          padding:25px 0 20px 0;
+          .places_count{
+            color:#000;
+            font-family: $RalewayB;
+            font-size:14px;
+          }
+          .start{
+            background:url('../images/icon-calendar.png') no-repeat left center;
+            display:inline-block;
+            padding-left:25px;
+            min-height:20px;
+            margin-top:20px;
+          }
+          .date{
+            margin-top:15px;
+            &>span{
+              display:block;
+              font-family: $OswaldR;
+              color:#fff;
+              &.day{
+                font-size:35px;
+              }
+              &.mouth{
+                font-size:18px;
+                text-transform: uppercase;
+              }
+              &.year{
+                font-size:14px;
+              }
+            }
+          }
+
+      }
     }
     .inner_item_course{
-      padding:25px 25px 60px 25px;
+      padding:25px 25px 40px 25px;
       .title_item_post{
         font-size:18px;
         margin-top:0;
@@ -1585,6 +1628,24 @@ html, body{
           }
         }
       }
+      .meta_block_info{
+        .item_meta{
+          font-family:$RalewayM;
+          font-size:14px;
+          color:#000;
+          margin-bottom:14px;
+          line-height: 1.6em;
+          span{
+            font-family:$RalewayB;
+          }
+          &.price{
+            font-family: $OswaldR;
+            span{
+              font-family:$RalewayB;
+            }
+          }
+        }
+      }
       .btn_wrap{
         text-align:center;
         position:absolute;
@@ -1592,6 +1653,7 @@ html, body{
         width:100%;
         left:0;
       }
+
     }
   }
 }
