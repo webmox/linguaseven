@@ -61,6 +61,12 @@
 	</div>
 </footer>
 
+<div id="order_vst" class="white-popup-block zoom-anim-dialog  mfp-hide">
+	<div class="from-register">
+		<?php echo do_shortcode('[contact-form-7 id="4" title="Форма заявки"]'); ?>
+	</div>
+</div>
+
 <?php wp_footer(); ?>	
 
 </body>

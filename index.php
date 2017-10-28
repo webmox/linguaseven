@@ -5,42 +5,79 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 left_block">
+							<?php 
+
+								$home_page = new WP_Query(array('post_type'=>'page', 'page_id'=>12)); 
+
+								if($home_page->have_posts()) : while($home_page->have_posts()) : $home_page->the_post();
+
+									/*--------private groupe-------*/
+									$title_one_section = get_field('title_one_section');
+									$description_learn_group = get_field('description_learn_group');
+									$advantag_groupe_one = get_field('advantag_groupe_one');
+									$advantag_groupe_two = get_field('advantag_groupe_two');
+
+									$title_learn_private = get_field('title_learn_private');
+									$description_learn_private = get_field('description_learn_private');
+									$advantage_private_one = get_field('advantage_private_one');
+									$advantag_private_two = get_field('advantag_private_two');
+
+								endwhile; 
+								endif; 
+							?>
+
 					<div class="block_info_type">
-						<h2>Learn in groups</h2>
+						<?php if($title_one_section){ ?>
+							<h2><?= $title_one_section ?></h2>
+						<?php } ?>	
 						<div class="wrap_btn">
 							<a href="" class="btn_default">Join free</a>
 						</div>
 					</div>
 					<div class="img_big groupe_block_img">
-						<span class="text_inner_img">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
+						<?php if($description_learn_group){ ?>
+							<span class="text_inner_img"><?= $description_learn_group ?></span>
+						<?php } ?>
 					</div>
 					<div class="black_blocks">
-						<div class="block_black">
-							<span class="pic"><img src="<?php bloginfo('template_url') ?>/build/images/icon_1.png" alt=""></span>
-							<span class="txt">Individual methodology</span>
-						</div>
-						<div class="block_black">
-							<span class="pic"><img src="<?php bloginfo('template_url') ?>/build/images/icon_2.png" alt=""></span>
-							<span class="txt">Your wishes and interests</span>
-						</div>
+						<?php if($advantag_groupe_one){ ?>
+							<div class="block_black">
+								<span class="pic"><img src="<?php bloginfo('template_url') ?>/build/images/icon_1.png" alt=""></span>
+								<span class="txt"><?= $advantag_groupe_one ?></span>
+							</div>
+						<?php } ?>
+						<?php if($advantag_private_two){ ?>
+							<div class="block_black">
+								<span class="pic"><img src="<?php bloginfo('template_url') ?>/build/images/icon_2.png" alt=""></span>
+								<span class="txt"><?= $advantag_private_two ?></span>
+							</div>
+						<?php } ?>
 					</div>
 				</div>
 				<div class="col-sm-6 right_block">
 					<div class="black_blocks">
-						<div class="block_black">
-							<span class="pic"><img src="<?php bloginfo('template_url') ?>/build/images/icon_3.png" alt=""></span>
-							<span class="txt">Learn private</span>
-						</div>
+					<?php if($advantage_private_one){ ?>
+							<div class="block_black">
+								<span class="pic"><img src="<?php bloginfo('template_url') ?>/build/images/icon_3.png" alt=""></span>
+								<span class="txt"><?= $advantage_private_one ?></span>
+							</div>
+						<?php } ?>
+						<?php if($advantag_private_two){ ?>
 						<div class="block_black">
 							<span class="pic"><img src="<?php bloginfo('template_url') ?>/build/images/icon_4.png" alt=""></span>
-							<span class="txt">Your wishes and interests</span>
+							<span class="txt"><?= $advantag_private_two ?></span>
 						</div>
+						<?php } ?>
 					</div>
 					<div class="img_big private_block_img">
-						<span class="text_inner_img">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+						<?php if($description_learn_private){ ?>
+							<span class="text_inner_img"><?= $description_learn_private ?></span>
+						<?php } ?>
 					</div>
 					<div class="block_info_type">
-						<h2>Learn private</h2>
+						<?php if($title_learn_private){ ?>
+							<h2><?= $title_learn_private ?></h2>
+						<?php } ?>
 						<div class="wrap_btn">
 							<a href="" class="btn_default">Submit application</a>
 						</div>

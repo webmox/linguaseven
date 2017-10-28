@@ -3,12 +3,12 @@ $(document).ready(function(){
     var  bg_header = $('.main_header_info');
     var  bg_section = $('.section-reviews');
 
-    $(window).on('scroll', function(){
-        var scroll_top = $(this).scrollTop();
-        var move_top = -scroll_top/2;
+    // $(window).on('scroll', function(){
+    //     var scroll_top = $(this).scrollTop();
+    //     var move_top = -scroll_top/2;
 
-        bg_header.css({'background-position':'center '+move_top+'px'});
-    });
+    //     bg_header.css({'background-position':'center '+move_top+'px'});
+    // });
 
 	 $('ul.tabs__caption').on('click', 'li:not(.active)', function() {
 	    $(this)
@@ -59,5 +59,37 @@ $(document).ready(function(){
         autoplaySpeed: 2000,
     });
 
+
+    /*-------------wrap span-----------*/
+    function wrap_letter(str, el){
+        str.trim()
+        var result = '';
+        for (var i = 0, len = str.length; i < len; i++) {
+          result += "<"+el+">"+str[i]+"</"+el+">";
+        }
+
+       return result;
+    }
+
+   var count =  $('.counter_block_wrap .counter_counter').text();
+   var newstr = wrap_letter(count, 'span');
+   $('.counter_block_wrap .counter_counter').html(newstr);
+
+
+
+/*///////////////////////////////////////////////////////////////////////////////////////////*/
+ $('.btn_join').magnificPopup({
+    type: 'inline',
+    preloader: false,
+    fixedContentPos: false,
+    fixedBgPos: true,
+    overflowY: 'auto',
+    closeBtnInside: true,
+    preloader: false,
+    midClick: true,
+    removalDelay: 300,
+    mainClass: 'my-mfp-zoom-in'
+});
+   
     
 });

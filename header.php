@@ -34,21 +34,55 @@
 <div class="main_header_info">
 	<div class="container">
 
+		<?php 
+
+			$home_page = new WP_Query(array('post_type'=>'page', 'page_id'=>12)); 
+
+			if($home_page->have_posts()) : while($home_page->have_posts()) : $home_page->the_post();
+
+				/*--------header top-------*/
+				$title_header = get_field('title_header');
+				$descript_top = get_field('descript_top');
+				$places_left_today = get_field('places_left_today');
+
+				/*--------private groupe-------*/
+				$title_one_section = get_field('title_one_section');
+				$description_learn_group = get_field('description_learn_group');
+				$advantag_groupe_one = get_field('advantag_groupe_one');
+				$advantag_groupe_two = get_field('advantag_groupe_two');
+
+				$title_learn_private = get_field('title_learn_private');
+				$description_learn_private = get_field('description_learn_private');
+				$advantage_private_one = get_field('advantage_private_one');
+				$advantag_private_two = get_field('advantag_private_two');
+
+			endwhile; 
+			endif; 
+		?>
+
 		<div class="main_header_bloc_txt">
-			<h1 class="title_header_main">Learn languages with us</h1>
+
+			<?php if(!empty($title_header)){ ?>
+				<h1 class="title_header_main"><?= $title_header ?></h1>
+			<?php } ?>
+			
+			<?php if($descript_top){ ?>
 			<div class="desction">
-				Thousands of students chose our methodology and 98% were satisfied with the results. Try and you! Sign up for a free 30 minute lesson!
+				<?= $descript_top; ?>
 			</div>
+			<?php } ?>
+
 			<div class="wrap_button_block">
-				<div class="counter_block_wrap">
-					<span class="info_txt">Places left today:</span>
-					<div class="counter_counter">
-						<span>0</span>
-						<span>3</span>
+				
+				<?php if($places_left_today){ ?>
+					<div class="counter_block_wrap">
+						<span class="info_txt">Places left today:</span>
+						<div class="counter_counter"><?= $places_left_today ?></div>
 					</div>
-				</div>
+				<?php } ?>
+
 				<div class="button_block">
-					<a href="" class="btn_default btn_join">Join free</a>
+					<a href="#order_vst" class="btn_default btn_join">Join free</a>
 				</div>
 			</div>
 		</div><!--end main_header_bloc_txt-->
