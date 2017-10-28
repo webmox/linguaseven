@@ -1,0 +1,21 @@
+* {outline: none !important;}
+
+a {
+  color: #07a3a3;
+  text-decoration: underline;
+  outline:none !important;
+  &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+    outline:none !important;
+  }
+  &:active {
+    outline:none !important;
+  }
+}
+
+input{
+  cursor: pointer;
+}

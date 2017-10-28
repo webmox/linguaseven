@@ -1,0 +1,24 @@
+//=============FOOTER=================
+
+// HIDDEN MEDIA
+@media (max-width: 575px) {
+  .hidden-xs-down {display: none;}
+}
+@media (min-width: 576px) {
+  .hidden-sm-up {display: none;}
+}
+@media (max-width: 767px) {
+  .hidden-sm-down {display: none;}
+}
+@media (min-width: 768px) {
+  .hidden-md-up {display: none;}
+}
+@media (max-width: 991px) {
+  .hidden-md-down {display: none;}
+}
+@media (min-width: 992px) {
+  .hidden-lg-up {display: none;}
+}
+@media (max-width: 1199px) {
+  .hidden-lg-down {display: none;}
+}
