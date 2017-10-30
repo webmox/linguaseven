@@ -22,6 +22,11 @@
 									$advantage_private_one = get_field('advantage_private_one');
 									$advantag_private_two = get_field('advantag_private_two');
 
+									/*--------section method--------*/
+									$title_section = get_field('title_section');
+									$description_section = get_field('description_section');
+									$advantages_method = get_field('advantages_method');
+
 								endwhile; 
 								endif; 
 							?>
@@ -90,36 +95,30 @@
 	<section class="about_method">
 		<div class="container">
 			<div class="descript_block">
-				<h2 class="title_about">About method of teaching</h2>
-				<p>Only top-class specialists work in our team</p>
+			<?php if($title_section){ ?>
+				<h2 class="title_about"><?= $title_section ?></h2>
+			<?php } ?>
+			<?php if($description_section){ ?>
+				<p><?= $description_section ?></p>
+			<?php } ?>
 			</div>
 			
 		</div>
+		<?php if($advantages_method){ ?>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-4">
-					<div class="item">
-						<i class="icon one_blc"></i>
-						<h4>Specialized Higher Education</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna </p>
+				<?php foreach($advantages_method as $item_block){ ?>
+					<div class="col-sm-4">
+						<div class="item">
+							<i class="icon" style="background:url('<?= $item_block['icon_block']  ?>') no-repeat center center;"></i>
+							<h4><?= $item_block['title_block']; ?></h4>
+							<p><?= $item_block['description_block']; ?></p>
+						</div>
 					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="item">
-						<i class="icon two_blc"></i>
-						<h4>High level of language</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna </p>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="item">
-						<i class="icon three_blc"></i>
-						<h4>Methodical literacy</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna </p>
-					</div>
-				</div>
+				<?php } ?>
 			</div>
 		</div>
+		<?php } ?>
 	</section>
 
 	<div class="section-blog p-t-80 p-b-60">
