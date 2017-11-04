@@ -9,7 +9,7 @@
 
 <header class="header header-page">
 	<div class="container">
-		<a href="" class="logo">
+		<a href="<?php bloginfo('url') ?>" class="logo">
 			<img src="<?php bloginfo('template_url') ?>/build/images/logo.png" alt="<?php  bloginfo('name') ?>">
 		</a>
 		<div class="header_right_info">

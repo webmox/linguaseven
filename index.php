@@ -27,6 +27,9 @@
 									$description_section = get_field('description_section');
 									$advantages_method = get_field('advantages_method');
 
+									/*----serction informationi-----*/
+									$items_info = get_field('items_info');
+
 								endwhile; 
 								endif; 
 							?>
@@ -186,20 +189,20 @@
 								array(
 									'taxonomy' => 'language',
 									'field'    => 'id',
-									'terms'    => array($lang->term_id)
+									'terms'    => $lang->term_id
 								)
 							)
 					  	));
 
 					  	 ?>
-					  	 <?php if($query->have_posts()) : ?>
+					  	 
 						    <div class="row">
 						    	<?php while($query->have_posts()) : $query->the_post()?>
 						    	<div class="col-sm-4">
 						    		<div class="item_post">
 						    			<?php if(has_post_thumbnail()){ ?>
 							    			<div class="img_block">
-							    				<a href="<?php the_peramlink() ?>"><?php the_post_thumbnail('300x160'); ?></a>
+							    				<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('300x160'); ?></a>
 							    			</div>
 						    			<?php } ?>
 						    			<div class="inner_item_post">
@@ -220,9 +223,9 @@
 						    	</div>
 								<?php endwhile ?>
 						    </div>
-						    <?php endif ?>
+						
 				    	<div class="wrap_all_posts">
-				    		<a href="<?php get_category_link($lang->term_id) ?>" class="all_post">View all posts<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+				    		<a href="<?php echo get_category_link($lang->term_id); ?>" class="all_post">View all posts<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 				    	</div>
 					  </div>
 					<?php } ?>
@@ -236,75 +239,56 @@
 
 	<section class="section-reviews">
 		<div class="container">
+			<?php if($items_info){ ?>
 			<div class="list_about_platform">
-				<div class="item_el">
-					<div class="img_blc"><img src="<?php bloginfo('template_url') ?>/build/images/teachers.png" alt="teachers"></div>
-					<p class="counter">1520</p>
-					<p class="txt">Teachers in the stale</p>
-				</div>
-				<div class="item_el">
-					<div class="img_blc"><img src="<?php bloginfo('template_url') ?>/build/images/students.png" alt="teachers"></div>
-					<p class="counter">12522</p>
-					<p class="txt">Teachers in the stale</p>
-				</div>
-				<div class="item_el">
-					<div class="img_blc"><img src="<?php bloginfo('template_url') ?>/build/images/lessons.png" alt="teachers"></div>
-					<p class="counter">1523420</p>
-					<p class="txt">Lessons are over</p>
-				</div>
+				<?php foreach($items_info as $item){ ?>
+					<div class="item_el">
+						<?php if($item['image_element']){ ?> 
+							<div class="img_blc"><img src="<?= $item['image_element'] ?>" alt="teachers"></div>
+						<?php } ?>
+						<?php if($item['number_field']){ ?> 
+							<p class="counter"><?= $item['number_field'] ?></p>
+						<?php } ?>
+						<?php if($item['description_item']){ ?> 
+							<p class="txt"><?= $item['description_item'] ?></p>
+						<?php } ?>
+					</div>
+				<?php } ?>
 			</div>
-			<div class="wrap-reviews-carousel">
-				<div class="owl-carousel owl-theme">
-				    <div class="item">
-				    	<div class="inner_item">
-				    		<div class="review-txt">
-				    			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate labore unde, expedita deserunt? Et laborum commodi dolor, tempore possimus, explicabo officia ad in maxime voluptatibus odio distinctio nisi fugit aperiam.
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate labore unde, expedita deserunt? Et laborum commodi dolor, tempore possimus, 
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate labore unde, expedita deserunt? Et laborum commodi dolor, tempore possimus, explicabo officia ad in maxime voluptatibus odio distinctio nisi fugit aperiam.
-				    		</div>
-				    		<div class="review-metainfo">
-					    		<div class="author-review">
-									<div class="author-img"><img src="<?php bloginfo('template_url') ?>/build/images/author_img.jpg" alt=""></div>
-									<span class="autor-name">Oliver</span>
-									<span class="status">Student</span>
-								</div>
-				    		</div>
-				    	</div>
-				    </div>
-				    <div class="item">
-				    	<div class="inner_item">
-				    		<div class="review-txt">
-				    			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate labore unde, expedita deserunt? Et laborum commodi dolor, tempore possimus, explicabo officia ad in maxime voluptatibus odio distinctio nisi fugit aperiam.
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate labore unde, expedita deserunt? Et laborum commodi dolor, tempore possimus, 
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate labore unde, expedita deserunt? Et laborum commodi dolor, tempore possimus, explicabo officia ad in maxime voluptatibus odio distinctio nisi fugit aperiam.
-				    		</div>
-				    		<div class="review-metainfo">
-					    		<div class="author-review">
-									<div class="author-img"><img src="<?php bloginfo('template_url') ?>/build/images/author_img.jpg" alt=""></div>
-									<span class="autor-name">Oliver</span>
-									<span class="status">Student</span>
-								</div>
-				    		</div>
-				    	</div>
-				    </div>
-				    <div class="item">
-				    	<div class="inner_item">
-				    		<div class="review-txt">
-				    			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate labore unde, expedita deserunt? Et laborum commodi dolor, tempore possimus, explicabo officia ad in maxime voluptatibus odio distinctio nisi fugit aperiam.
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate labore unde, expedita deserunt? Et laborum commodi dolor, tempore possimus, 
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate labore unde, expedita deserunt? Et laborum commodi dolor, tempore possimus, explicabo officia ad in maxime voluptatibus odio distinctio nisi fugit aperiam.
-				    		</div>
-				    		<div class="review-metainfo">
-					    		<div class="author-review">
-									<div class="author-img"><img src="<?php bloginfo('template_url') ?>/build/images/author_img.jpg" alt=""></div>
-									<span class="autor-name">Oliver</span>
-									<span class="status">Student</span>
-								</div>
-				    		</div>
-				    	</div>
-				    </div>
-				</div>
-			</div>
+			<?php } ?>
+			
+			<?php $reviews = new WP_Query(array('post_type'=>'review', 'posts_per_page'=>3)); ?>
+
+			<?php if($reviews->found_posts) : ?>
+				<div class="wrap-reviews-carousel">
+					<div class="owl-carousel owl-theme">
+						<?php while($reviews->have_posts()) : $reviews->the_post() ?>
+						    <div class="item">
+						    	<div class="inner_item">
+						    		<div class="review-txt">
+						    			<?php the_excerpt() ?>
+						    		</div>
+						    		<div class="review-metainfo">
+							    		<div class="author-review">
+							    			<?php if(has_post_thumbnail()){ $img_url = get_the_post_thumbnail_url($post->ID) ?>
+												<div class="author-img"><img src="<?= $img_url ?>" alt=""></div>
+											<?php } ?>
+											<span class="autor-name"><?php the_title(); ?></span>
+											<?php $profession = get_field('profession'); ?>
+											<?php if($profession){ ?>
+												<span class="status"><?= $profession ?></span>
+											<?php } ?>
+										</div>
+						    		</div>
+						    	</div>
+						    </div>
+						<?php endwhile ?>
+
+					</div>
+				</div><!--end wrap-reviews-carousel-->
+			<?php endif ?>
+
+
 		</div>
 	</section>
 
