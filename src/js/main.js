@@ -90,6 +90,11 @@ $(document).ready(function(){
     removalDelay: 300,
     mainClass: 'my-mfp-zoom-in'
 });
+
+
+ //added action class for tabs in the home page
+ $('.tabs .tabs__caption li').first().addClass('active');
+ $('.tabs .tabs__content').first().addClass('active');
    
     
 });

@@ -37,7 +37,7 @@ register_nav_menu('menu-footer', 'footer-menu');
 
 
 function add_custom_sizes() {
-    add_image_size('img-srvice', 360, 380, true);
+    add_image_size('300x160', 300, 160, true);
 }
 
 add_action('after_setup_theme','add_custom_sizes');

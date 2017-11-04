@@ -132,205 +132,106 @@
 					</form>
 				</div>
 
-			<div class="tabs">
-				  <ul class="tabs__caption">
-				    <li class="active">English</li>
-				    <li>German</li>
-				    <li>French</li>
-				  </ul>
+				<?php 
 
-				  <div class="tabs__content active">
-				    <div class="row">
-				    	<div class="col-sm-4">
-				    		<div class="item_post">
-				    			<div class="img_block">
-				    				<a href="#"><img src="<?php bloginfo('template_url') ?>/build/images/img_blog.jpg" alt=""></a>
-				    			</div>
-				    			<div class="inner_item_post">
-				    				<h3 class="title_item_post"><a href="">English sports verbs</a></h3>
-				    				<div class="item_post_descript">
-				    					Let's consider the basic rules Application of suffixes - ent and - ant
-				    				</div>
-				    				<div class="wrap_read">
-				    					<a href="#" class="read_more">Read</a>
-				    				</div>
-				    				<div class="item_post_meta">
-				    					<span class="views">230</span>
-				    				</div>
-				    			</div>
-				    		</div>
-				    	</div>
-				    	<div class="col-sm-4">
-				    		<div class="item_post">
-				    			<div class="img_block">
-				    				<a href="#"><img src="<?php bloginfo('template_url') ?>/build/images/img_blog2.jpg" alt=""></a>
-				    			</div>
-				    			<div class="inner_item_post">
-				    				<h3 class="title_item_post"><a href="">English sports verbs</a></h3>
-				    				<div class="item_post_descript">
-				    					Let's consider the basic rules Application of suffixes - ent and - ant
-				    				</div>
-				    				<div class="wrap_read">
-				    					<a href="#" class="read_more">Read</a>
-				    				</div>
-				    				<div class="item_post_meta">
-				    					<span class="views">230</span>
-				    				</div>
-				    			</div>
-				    		</div>
-				    	</div>
-				    	<div class="col-sm-4">
-				    		<div class="item_post">
-				    			<div class="img_block">
-				    				<a href="#"><img src="<?php bloginfo('template_url') ?>/build/images/img_blog3.jpg" alt=""></a>
-				    			</div>
-				    			<div class="inner_item_post">
-				    				<h3 class="title_item_post"><a href="">English sports verbs</a></h3>
-				    				<div class="item_post_descript">
-				    					Let's consider the basic rules Application of suffixes - ent and - ant
-				    				</div>
-				    				<a href="#" class="read_more">Read</a>
-				    				<div class="item_post_meta">
-				    					<span class="views">230</span>
-				    				</div>
-				    			</div>
-				    		</div>
-				    	</div>
-				    </div>
-			    	<div class="wrap_all_posts">
-			    		<a href="" class="all_post">View all posts<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-			    	</div>
-				  </div>
+					$args = array(
+						'taxonomy'      => array('language' ), // название таксономии с WP 4.5
+						'orderby'       => 'id', 
+						'order'         => 'ASC',
+						'hide_empty'    => true, 
+						'object_ids'    => null, // 
+						'include'       => array(),
+						'exclude'       => array(), 
+						'exclude_tree'  => array(), 
+						'number'        => '', 
+						'fields'        => 'all', 
+						'count'         => false,
+						'slug'          => '', 
+						'parent'         => '',
+						'hierarchical'  => true, 
+						'child_of'      => 0, 
+						'get'           => '', // ставим all чтобы получить все термины
+						'name__like'    => '',
+						'pad_counts'    => false, 
+						'offset'        => '', 
+						'search'        => '', 
+						'cache_domain'  => 'core',
+						'name'          => '', // str/arr поле name для получения термина по нему. C 4.2.
+						'childless'     => false, // true не получит (пропустит) термины у которых есть дочерние термины. C 4.2.
+						'update_term_meta_cache' => true, // подгружать метаданные в кэш
+						'meta_query'    => '',
+					); 
 
-				  <div class="tabs__content">
-					  <div class="row">
-					  	<div class="col-sm-4">
-				    		<div class="item_post">
-				    			<div class="img_block">
-				    				<a href="#"><img src="<?php bloginfo('template_url') ?>/build/images/img_blog.jpg" alt=""></a>
-				    			</div>
-				    			<div class="inner_item_post">
-				    				<h3 class="title_item_post"><a href="">English sports verbs</a></h3>
-				    				<div class="item_post_descript">
-				    					Let's consider the basic rules Application of suffixes - ent and - ant
-				    				</div>
-				    				<div class="wrap_read">
-				    					<a href="#" class="read_more">Read</a>
-				    				</div>
-				    				<div class="item_post_meta">
-				    					<span class="views">230</span>
-				    				</div>
-				    			</div>
-				    		</div>
-				    	</div>
-				    	<div class="col-sm-4">
-				    		<div class="item_post">
-				    			<div class="img_block">
-				    				<a href="#"><img src="<?php bloginfo('template_url') ?>/build/images/img_blog3.jpg" alt=""></a>
-				    			</div>
-				    			<div class="inner_item_post">
-				    				<h3 class="title_item_post"><a href="">English sports verbs</a></h3>
-				    				<div class="item_post_descript">
-				    					Let's consider the basic rules Application of suffixes - ent and - ant
-				    				</div>
-				    				<div class="wrap_read">
-				    					<a href="#" class="read_more">Read</a>
-				    				</div>
-				    				<div class="item_post_meta">
-				    					<span class="views">230</span>
-				    				</div>
-				    			</div>
-				    		</div>
+					$langs = get_terms( $args );
 
-				    	</div>
-				    	<div class="col-sm-4">
-				    		<div class="item_post">
-				    			<div class="img_block">
-				    				<a href="#"><img src="<?php bloginfo('template_url') ?>/build/images/img_blog.jpg" alt=""></a>
-				    			</div>
-				    			<div class="inner_item_post">
-				    				<h3 class="title_item_post"><a href="">English sports verbs</a></h3>
-				    				<div class="item_post_descript">
-				    					Let's consider the basic rules Application of suffixes - ent and - ant
-				    				</div>
-				    				<a href="#" class="read_more">Read</a>
-				    				<div class="item_post_meta">
-				    					<span class="views">230</span>
-				    				</div>
-				    			</div>
-				    		</div>
+				?>	
+				  
+			<?php if(!is_wp_error($langs)){ ?>
+				<div class="tabs">
+					  
+					  <ul class="tabs__caption">
+					  	<?php foreach($langs as $lang){ ?>
+					    	<li><?= $lang->name ?></li>
+					    <?php } ?>
+					  </ul>
+					
+					 <?php foreach($langs as $lang){ ?>
+
+					  <div class="tabs__content">
+
+					  	<?php $query = new WP_Query(array(
+					  	'post_type'=>'blog',
+					  	'posts_per_page'=>3,
+					  	'tax_query' => array(
+								array(
+									'taxonomy' => 'language',
+									'field'    => 'id',
+									'terms'    => array($lang->term_id)
+								)
+							)
+					  	));
+
+					  	 ?>
+					  	 <?php if($query->have_posts()) : ?>
+						    <div class="row">
+						    	<?php while($query->have_posts()) : $query->the_post()?>
+						    	<div class="col-sm-4">
+						    		<div class="item_post">
+						    			<?php if(has_post_thumbnail()){ ?>
+							    			<div class="img_block">
+							    				<a href="<?php the_peramlink() ?>"><?php the_post_thumbnail('300x160'); ?></a>
+							    			</div>
+						    			<?php } ?>
+						    			<div class="inner_item_post">
+						    				<h3 class="title_item_post"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+						    				<?php if(has_excerpt()){ ?>
+						    				<div class="item_post_descript">
+						    					<?php the_excerpt(); ?>
+						    				</div>
+						    				<?php } ?>
+						    				<div class="wrap_read">
+						    					<a href="<?php the_permalink() ?>" class="read_more">Read</a>
+						    				</div>
+						    				<div class="item_post_meta">
+						    					<span class="views">230</span>
+						    				</div>
+						    			</div>
+						    		</div>
+						    	</div>
+								<?php endwhile ?>
+						    </div>
+						    <?php endif ?>
+				    	<div class="wrap_all_posts">
+				    		<a href="<?php get_category_link($lang->term_id) ?>" class="all_post">View all posts<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 				    	</div>
 					  </div>
-					   <div class="wrap_all_posts">
-				    		<a href="" class="all_post">View all posts</a>
-				    	</div>
-				  </div>
-
-				  <div class="tabs__content">
-					  <div class="row">
-					  	<div class="col-sm-4">
-					    		<div class="item_post">
-					    			<div class="img_block">
-					    				<a href="#"><img src="<?php bloginfo('template_url') ?>/build/images/img_blog3.jpg" alt=""></a>
-					    			</div>
-					    			<div class="inner_item_post">
-					    				<h3 class="title_item_post"><a href="">English sports verbs</a></h3>
-					    				<div class="item_post_descript">
-					    					Let's consider the basic rules Application of suffixes - ent and - ant
-					    				</div>
-					    				<div class="wrap_read">
-					    					<a href="#" class="read_more">Read</a>
-					    				</div>
-					    				<div class="item_post_meta">
-					    					<span class="views">230</span>
-					    				</div>
-					    			</div>
-					    		</div>
-					    	</div>
-					    	<div class="col-sm-4">
-					    		<div class="item_post">
-					    			<div class="img_block">
-					    				<a href="#"><img src="<?php bloginfo('template_url') ?>/build/images/img_blog.jpg" alt=""></a>
-					    			</div>
-					    			<div class="inner_item_post">
-					    				<h3 class="title_item_post"><a href="">English sports verbs</a></h3>
-					    				<div class="item_post_descript">
-					    					Let's consider the basic rules Application of suffixes - ent and - ant
-					    				</div>
-					    				<div class="wrap_read">
-					    					<a href="#" class="read_more">Read</a>
-					    				</div>
-					    				<div class="item_post_meta">
-					    					<span class="views">230</span>
-					    				</div>
-					    			</div>
-					    		</div>
-					    	</div>
-					    	<div class="col-sm-4">
-					    		<div class="item_post">
-					    			<div class="img_block">
-					    				<a href="#"><img src="<?php bloginfo('template_url') ?>/build/images/img_blog2.jpg" alt=""></a>
-					    			</div>
-					    			<div class="inner_item_post">
-					    				<h3 class="title_item_post"><a href="">English sports verbs</a></h3>
-					    				<div class="item_post_descript">
-					    					Let's consider the basic rules Application of suffixes - ent and - ant
-					    				</div>
-					    				<a href="#" class="read_more">Read</a>
-					    				<div class="item_post_meta">
-					    					<span class="views">230</span>
-					    				</div>
-					    			</div>
-					    		</div>
-					    	</div>
-					  </div>
-			    	<div class="wrap_all_posts">
-			    		<a href="" class="all_post">View all posts</a>
-			    	</div>
-				  </div>
-			</div><!-- .tabs-->
-		</div>
+					<?php } ?>
+				</div><!-- .tabs-->
+			<?php } ?>
+ 		</div>
 	</div><!--end section-blog-->
+
+
 
 
 	<section class="section-reviews">
