@@ -61,7 +61,7 @@ register_sidebar(array(
         'after_widget' => "</div>")
 );
 
-/*-------------------------sidebar-------------------------------*/
+/*-------------------------subscribe-------------------------------*/
 register_sidebar(array(
         'name' => "Блок с формай подписки",
         'id' => 'subscribe',
@@ -70,6 +70,42 @@ register_sidebar(array(
         'before_title' => '<h2 class="title">',
         'after_title' => "</h2>\n",
         'before_widget' => '<div class="widget-block">',
+        'after_widget' => "</div>")
+);
+
+/*-------------------------footer block 1-------------------------------*/
+register_sidebar(array(
+        'name' => "Footer block 1",
+        'id' => 'footer_bloc_1',
+        'description' => 'Этот виджет будет показан в нижний части страницы',
+        'class'=>'',
+        'before_title' => '<h2 class="title_widget">',
+        'after_title' => "</h2>\n",
+        'before_widget' => '<div class="widget_footer">',
+        'after_widget' => "</div>")
+);
+
+/*-------------------------footer block 2-------------------------------*/
+register_sidebar(array(
+        'name' => "Footer block 2",
+        'id' => 'footer_bloc_2',
+        'description' => 'Этот виджет будет показан в нижний части страницы',
+        'class'=>'',
+        'before_title' => '<h2 class="title_widget">',
+        'after_title' => "</h2>\n",
+        'before_widget' => '<div class="widget_footer">',
+        'after_widget' => "</div>")
+);
+
+/*-------------------------footer block 3-------------------------------*/
+register_sidebar(array(
+        'name' => "Footer block 3",
+        'id' => 'footer_bloc_3',
+        'description' => 'Этот виджет будет показан в нижний части страницы',
+        'class'=>'content_footer',
+        'before_title' => '<h2 class="title_widget">',
+        'after_title' => "</h2>\n",
+        'before_widget' => '<div class="widget_footer">',
         'after_widget' => "</div>")
 );
 
@@ -128,6 +164,32 @@ function wp_corenavi() {
   echo $pages . paginate_links($a);
   if ($max > 1) echo '</div>';
 }
+
+
+function getPostViews($postID){
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+        return "0 View";
+    }
+    return $count.' Views';
+}
+function setPostViews($postID) {
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+    }else{
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+}
+// Remove issues with prefetching adding extra views
+remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
 
 /*

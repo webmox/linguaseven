@@ -16,7 +16,9 @@ textarea {
   box-shadow:1px 0 25px rgba(0, 0, 0, 0.35);
   border-radius:5px;
   text-decoration:none;
-  &:hover{
+  &:hover,
+  &:active,
+  &:focus{
     text-decoration: none;
     transition: 0.3s;
   }

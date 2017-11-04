@@ -20,34 +20,37 @@
 					<div class="row">
 
 						<div class="col-sm-4">
-							<div class="widget_footer">
+							<?php if(dynamic_sidebar('footer_bloc_1')) ?>
+							<!-- <div class="widget_footer">
 								<h2 class="title_widget">Platform</h2>
 								<ul class="menu_footer">
 									<li><a href="#">About platform</a></li>
 									<li><a href="#">Methodologies</a></li>
 									<li><a href="#">Contacts</a></li>
 								</ul>
-							</div>
+							</div> -->
 						</div>
 						<div class="col-sm-4">
-							<div class="widget_footer">
+							<?php if(dynamic_sidebar('footer_bloc_1')) ?>
+							<!-- <div class="widget_footer">
 								<h2 class="title_widget">Courses</h2>
 								<ul class="menu_footer">
 									<li><a href="#">Teach private</a></li>
 									<li><a href="#">Teach in groups</a></li>
 									<li><a href="#">Teach yourself</a></li>
 								</ul>
-							</div>
+							</div> -->
 						</div> 
 						<div class="col-sm-4">
-							<div class="widget_footer">
+							<?php if(dynamic_sidebar('footer_bloc_3')) ?>
+							<!-- <div class="widget_footer">
 								<h2 class="title_widget">Courses</h2>
 								<div class="content_footer">
 									<p><a href="#">Skype</a></p>
 									<p><a href="#">Email</a></p>
 									<p><a href="#">Send message</a></p>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -64,6 +67,12 @@
 <div id="order_vst" class="white-popup-block zoom-anim-dialog  mfp-hide">
 	<div class="from-register">
 		<?php echo do_shortcode('[contact-form-7 id="4" title="Форма заявки"]'); ?>
+	</div>
+</div>
+
+<div id="contact_form" class="white-popup-block zoom-anim-dialog  mfp-hide">
+	<div class="from-register">
+		<?php echo do_shortcode('[contact-form-7 id="62" title="Contact"]'); ?>
 	</div>
 </div>
 

@@ -1,4 +1,7 @@
 <?php get_header('page') ?>
+<?php
+    setPostViews(get_the_ID());
+?>
 
 <div class="main_container">
 	<div class="container">

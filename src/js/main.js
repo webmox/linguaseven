@@ -78,7 +78,7 @@ $(document).ready(function(){
 
 
 /*///////////////////////////////////////////////////////////////////////////////////////////*/
- $('.btn_join').magnificPopup({
+ $('.btn_join, .order_event').magnificPopup({
     type: 'inline',
     preloader: false,
     fixedContentPos: false,

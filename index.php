@@ -39,7 +39,7 @@
 							<h2><?= $title_one_section ?></h2>
 						<?php } ?>	
 						<div class="wrap_btn">
-							<a href="" class="btn_default">Join free</a>
+							<a href="#order_vst" class="btn_default order_event">Join free</a>
 						</div>
 					</div>
 					<div class="img_big groupe_block_img">
@@ -87,7 +87,7 @@
 							<h2><?= $title_learn_private ?></h2>
 						<?php } ?>
 						<div class="wrap_btn">
-							<a href="" class="btn_default">Submit application</a>
+							<a href="#order_vst" class="btn_default order_event">Submit application</a>
 						</div>
 					</div>
 				</div>
@@ -216,7 +216,7 @@
 						    					<a href="<?php the_permalink() ?>" class="read_more">Read</a>
 						    				</div>
 						    				<div class="item_post_meta">
-						    					<span class="views">230</span>
+						    					<span class="views"><?php  echo getPostViews(get_the_ID()); ?></span>
 						    				</div>
 						    			</div>
 						    		</div>
