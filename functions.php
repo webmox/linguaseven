@@ -1,6 +1,7 @@
 <?php
 
 require_once('include/custom_types.php');
+require_once('include/options_page.php');
 
 function print_array($arr){
         echo "<pre>";
@@ -135,13 +136,13 @@ function get_subscribes_users() {
     
     global $wpdb;
 
-    $users = $wpdb->query( "SELECT COUNT(1) FROM wp_subscribe2" );
+    $users = $wpdb->get_var( "SELECT COUNT(*) FROM wp_subscribe2" );
 
     return $users;
  
 } // end s2member_filter()
  
-add_filter('wp_footer', 'get_subscribes_users', 1);
+add_action('wp_footer', 'get_subscribes_users');
 
 
 // init sessiont in wordpress

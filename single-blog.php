@@ -1,6 +1,14 @@
 <?php get_header('page') ?>
 <?php
     setPostViews(get_the_ID());
+
+    	// vars
+	$queried_object = get_queried_object(); 
+	$taxonomy = $queried_object->taxonomy;
+	$term_id = $queried_object->term_id;  
+
+	print_array($queried_object);
+
 ?>
 
 <div class="main_container">
@@ -17,9 +25,17 @@
 					</div>
 				</div>
 				<div class="col-md-3">
+				<?php 
+
+					$query = new WP_Query(array('post_type'=>'blog', 'posts_per_page'=>1));
+
+				?>
 					<div class="sidebar">
 						<div class="widget">
-							<img src="<?php  bloginfo('template_url') ?>/build/images/sidebar_img.png" alt="">
+							<div class="frame_block">
+								
+							</div>
+							<!-- <img src="<?php  //bloginfo('template_url') ?>/build/images/sidebar_img.png" alt=""> -->
 						</div>
 						<div class="widget text-sidebar">
 							<div class="widget_inner">

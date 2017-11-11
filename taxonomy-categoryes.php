@@ -1,4 +1,6 @@
 <?php 
+
+
 	if(isset($_GET['lang']) && !empty($_GET['lang'])){
 		$current_lagn = $_GET['lang'];
 		$_SESSION['my_lang'] = $current_lagn;
