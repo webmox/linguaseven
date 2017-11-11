@@ -1,13 +1,27 @@
 <?php 
-	if(isset($_GET['lang'])){
-		$current_lagn = (int) $_GET['lang'];
+	if(isset($_GET['lang']) && !empty($_GET['lang'])){
+		$current_lagn = $_GET['lang'];
 		$_SESSION['my_lang'] = $current_lagn;
+
+		$curent_url = substr($_SERVER['REQUEST_URI'],0,strpos($_SERVER['REQUEST_URI'],'?'));
+		$url_params = get_bloginfo('url').$curent_url;
 	}else{
-		if(isset($_SESSION['my_lang'])){
-			$current_lagn = $_SESSION['my_lang'];
+		if(isset($_SESSION['my_lang']) && !empty($_SESSION['my_lang'])){
+			 $current_lagn = $_SESSION['my_lang'];
 		}
-	} 
+	}
+
+
+	// vars
+	$queried_object = get_queried_object(); 
+	$taxonomy = $queried_object->taxonomy;
+	$term_id = $queried_object->term_id;  
+
+
+	
+
 ?>
+
 
 <?php get_header('page') ?>
 
@@ -18,7 +32,8 @@
 <div class="main_container">
 	<div class="container">
 
-		<?php    
+		<?php 
+
 
 			$args = array(
 				'taxonomy'      => array('language' ), // название таксономии с WP 4.5
@@ -55,8 +70,8 @@
 		<?php if($langs){ ?>
 			<div class="list-lang">
 				<ul class="list">
-					<?php foreach($langs as $lang){ ?>
-						<li class="cat_el cat_id_<?= $lang->term_id ?>"><a class="link_cat <?php if($current_lagn == $lang->term_id){ echo 'current'; } ?>" href="<?= get_bloginfo('url') ?>/blog?lang=<?= $lang->term_id ?>"><?= $lang->name ?></a></li>
+					<?php foreach($langs as $lang){   ?>
+						<li class="cat_el cat_id_<?= $lang->term_id ?>"><a class="link_cat <?php if($current_lagn == $lang->term_id){ echo 'current'; } ?>" href="<?=  $url_params."?lang=".$lang->term_id ?>"><?= $lang->name ?></a></li>
 					<?php } ?>
 				</ul>
 			</div>
@@ -77,20 +92,26 @@
 							 	'post_type'=>'blog', 
 							 	'posts_per_page'=>4,
 							 	'tax_query' => array(
+							 		'relation' => 'AND',
 									array(
 										'taxonomy' => 'language',
 										'field'    => 'id',
 										'terms'    => $current_lagn
+									),
+									array(
+										'taxonomy' => $taxonomy,
+										'field'    => 'id',
+										'terms'    => $term_id
 									)
 							));
 
-							//print_array($args);
+							 //print_array($args);
 
 							 $query = new WP_Query($args);	
 
 						 ?>
-
-						<div class="right_container">
+						<?php if($query->found_posts){ ?>
+						<div class="right_container">	
 							<div class="row">
 								<?php if($query->have_posts()) : while($query->have_posts()) : $query->the_post() ?>
 									<div class="col-sm-6">
@@ -120,13 +141,16 @@
 								<?php endif; ?>
 							</div>
 						</div>
+						<?php }else{ ?>
+							<p>Нет записей по указаным параметрам.</p>
+						<?php } ?> 
 					</div>
 				</div>
 			</div>
 
 				<?php 
 					$args['offset'] = 4;
-					$args['posts_per_page'] = 3;
+					$args['posts_per_page'] = 6;
 					//print_array($args);
 					$query = new WP_Query($args);
 				?>
@@ -161,8 +185,8 @@
 							<?php endif; ?>
 						</div>
 					</div>
-			<?php } ?>
-			<?php if($query->found_posts > 7){ ?>
+			<?php }  ?>
+			<?php if($query->found_posts > 11){ ?>
 				<div class="wrap_all_posts">
 		    		<a href="" class="all_post more_posts">More posts<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 		    	</div>

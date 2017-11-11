@@ -225,7 +225,7 @@
 						    </div>
 						
 				    	<div class="wrap_all_posts">
-				    		<a href="<?php echo get_category_link($lang->term_id); ?>" class="all_post">View all posts<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+				    		<a href="<?= get_bloginfo('url') ?>/blog?lang=<?= $lang->term_id?>" class="all_post">View all posts<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 				    	</div>
 					  </div>
 					<?php } ?>

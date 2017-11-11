@@ -61,6 +61,13 @@ register_sidebar(array(
         'after_widget' => "</div>")
 );
 
+function my_taxonomy_types($taxonomies) {
+    // where 'my_taxonomy_type' is the name of your custom taxonomy
+    $taxonomies[] = 'categoryes';
+    return $taxonomies;
+}
+add_filter('s2_taxonomies', 'my_taxonomy_types');
+
 /*-------------------------subscribe-------------------------------*/
 register_sidebar(array(
         'name' => "Блок с формай подписки",
@@ -122,6 +129,29 @@ function get_template_part_with_data($slug, array $data = array()){
     extract($data);
  
     require locate_template($slug);
+}
+
+function get_subscribes_users() {
+    
+    global $wpdb;
+
+    $users = $wpdb->query( "SELECT COUNT(1) FROM wp_subscribe2" );
+
+    return $users;
+ 
+} // end s2member_filter()
+ 
+add_filter('wp_footer', 'get_subscribes_users', 1);
+
+
+// init sessiont in wordpress
+
+add_action('init', 'myStartSession', 1);
+
+function myStartSession() {
+    if(!session_id()) {
+        session_start();
+    }
 }
 
 /*///////////обрезаем заголовки в верхнем слайдере//////////*/

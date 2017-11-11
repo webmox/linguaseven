@@ -5,20 +5,14 @@
 
 <div class="main_container">
 	<div class="container">
+	<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 		<section class="content-section">
-			<h1 class="title-page">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h1>
+			<h1 class="title-page"><?php the_title(); ?></h1>
 			<div class="row">
 				<div class="col-md-9">
 					<div class="content">
 						<div class="text_style">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque blanditiis adipisci qui vitae sed repellat rerum asperiores earum porro, dolore, quasi fuga optio facilis ipsam quia dolor architecto natus placeat.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque blanditiis adipisci qui vitae sed repellat rerum asperiores earum porro, dolore, quasi fuga optio facilis ipsam quia dolor architecto natus placeat.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque blanditiis adipisci qui vitae sed repellat rerum asperiores earum porro, dolore, quasi fuga optio facilis ipsam quia dolor architecto natus placeat.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque blanditiis adipisci qui vitae sed repellat rerum asperiores earum porro, dolore, quasi fuga optio facilis ipsam quia dolor architecto natus placeat.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque blanditiis adipisci qui vitae sed repellat rerum asperiores earum porro, dolore, quasi fuga optio facilis ipsam quia dolor architecto natus placeat.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque blanditiis adipisci qui vitae sed repellat rerum asperiores earum porro, dolore, quasi fuga optio facilis ipsam quia dolor architecto natus placeat.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque blanditiis adipisci qui vitae sed repellat rerum asperiores earum porro, dolore, quasi fuga optio facilis ipsam quia dolor architecto natus placeat.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque blanditiis adipisci qui vitae sed repellat rerum asperiores earum porro, dolore, quasi fuga optio facilis ipsam quia dolor architecto natus placeat.</p>
+							<?php the_content(); ?>
 						</div>
 					</div>
 				</div>
@@ -37,11 +31,13 @@
 				</div>
 			</div>
 		</section>
+		<?php endwhile; ?>
+		<?php endif ?>
 		<div class="wrap-form-subscribe">
 			<h2 class="title-subscribe">Subscribe to newsletter</h2>
 			<div class="descript-subscribe">Get the latest news about our courses and lessons</div>
 			<?php if(dynamic_sidebar('subscribe')) ?>
-			<p class="info-subsc">Already subscribed — <span>167 890</span> people</p>
+			<p class="info-subsc">Already subscribed — <span><?= get_subscribes_users(); ?></span> people</p>
 		</div>
 
 		<div class="button_block_img"></div>
